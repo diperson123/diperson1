@@ -1,0 +1,105 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserMasterPage.master.cs" Inherits="User_UserMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Diperson Kitchen's Kit</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/login3.css" rel="stylesheet" />
+    <link href="../css/loginStyleSheet.css" rel="stylesheet" />
+    <style>
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: white;
+            padding: 25px;
+        }
+
+        .navbar {
+    color: #000000;
+    background-color: #000000;
+        }
+
+
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            min-height: 200px;
+
+
+        }
+
+        
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Home.aspx"><span>
+                        
+                            
+                        </span> </a>
+                    </div>
+                 
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav" style="color:white">
+                        <li id="home" class="active"><a href="Home.aspx" style="background-color:#4dd0e1;font-size:25px;"><b>Home</b></a></li>
+                        <li id="about"><a href="About.aspx" style="color:#4dd0e1; font-size:18px;"><b>About Us</b></a></li>
+                        <li id="menu"><a href="Menu.aspx" style="color:#4dd0e1; font-size:18px;"><b>Our Products</b></a></li>
+                        
+                        <li id="userfeedback"><a href="UserFeedback.aspx" style="color:#4dd0e1; font-size: 18px;"><b>Feedback</b></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li><a href="Cart.aspx" style="color:#e53935;"><b>Cart</b><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;<span class="item-count" id="itemcount" style="color: #000; font-size: 25px;" runat="server"><asp:Label ID="itemQuantity" runat="server" ></asp:Label></span></a></li>
+                        <%if (Session["USERID"] != null)
+                                  { %>
+                                <li>
+                                    <asp:LinkButton ID="btnSignOut" runat="server" ToolTip="Logout" OnClick="btnLogout_Click" Text="SignIn" style="color:#e53935;"><span class="glyphicon glyphicon-log-out" style="position:initial;  font-size: 16px; top:0px; display:initial;"><b>LogOut</b> </span></asp:LinkButton>
+                                </li>
+                                <%}
+                                  else
+                                  { %>
+                                <li>
+                                    <asp:LinkButton ID="btnSignIn" runat="server" ToolTip="sign in" OnClick="btnSignIn_Click" Text="SignIn" style="color:#e53935;"><span class="glyphicon glyphicon-user" style="position:initial; font-size: 16px; top:0px; display:initial;"><b>SignIn</b> </span></asp:LinkButton>
+                                    <%} %>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="mainbody" style="min-height: 500px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="footer-container">
+            <div class="container">
+                
+                
+            <div class="footer-copyright">
+                <p style="margin-left:400px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All Rights Reserved. Copyright DKK Suppliers</p>
+            </div>
+                </div>
+        </footer>
+    </form>
+    <script src="../js/JavaScript.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+</body>
+</html>
